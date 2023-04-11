@@ -1,0 +1,14 @@
+read 1 
+read 2
+read 3
+
+cyklus:
+	write 1
+	load 1
+	mult 2
+	store 1
+	load 3
+	sub =1
+	store 3
+	jgtz cyklus
+halt
