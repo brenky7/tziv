@@ -1,0 +1,441 @@
+name: projektTS
+source code: |-
+  #sifrovanie textu do cisel, sifra je nalavo, output napravo od vstupu
+  input: 'acdegfb$'
+  blank: ' '
+  start state: start
+  table:
+    start:
+      'a': L
+      'b': L
+      'c': L
+      'd': L
+      'e': L
+      'f': L
+      'g': L
+      ' ': {write: '#', L: zapisA}
+    
+    zapisA:
+      ' ': {write: 'a', L: zapis1}
+    zapis1:
+      ' ': {write: '1', L: zapis1b}
+    zapis1b:
+      ' ': {write: '1', L: zapisB}
+    zapisB: 
+      ' ': {write: 'b', L: zapis2}
+    zapis2:
+      ' ': {write: '2', L: zapisC}
+    zapisC: 
+      ' ': {write: 'c', L: zapis3}
+    zapis3:
+      ' ': {write: '3', L: zapis3b}
+    zapis3b:
+      ' ': {write: '3', L: zapisD}
+    zapisD: 
+      ' ': {write: 'd', L: zapis4}
+    zapis4:
+      ' ': {write: '4', L: zapisE}
+    zapisE: 
+      ' ': {write: 'e', L: zapis5}
+    zapis5:
+      ' ': {write: '5', L: zapis5b}
+    zapis5b:
+      ' ': {write: '5', L: zapisF}
+    zapisF: 
+      ' ': {write: 'f', L: zapis6}
+    zapis6:
+      ' ': {write: '6', L: zapisG}  
+    zapisG: 
+      ' ': {write: 'g', L: zapis7}
+    zapis7:
+      ' ': {write: '7', L: zapis7b}
+    zapis7b:
+      ' ': {write: '7', R: najdiHestekZlava}  
+    
+    najdiHestekZlava:
+      '7': R
+      'g': R
+      '6': R
+      'f': R
+      '5': R
+      'e': R
+      '4': R
+      'd': R
+      '3': R
+      'c': R
+      '2': R
+      'b': R
+      '1': R
+      'a': R
+      '#': {R: sifruj}
+      
+    sifruj:
+      'a': {write: 'A', R: sifrujA}
+      'b': {write: 'B', R: sifrujB} 
+      'c': {write: 'C', R: sifrujC}
+      'd': {write: 'D', R: sifrujD}
+      'e': {write: 'E', R: sifrujE}
+      'f': {write: 'F', R: sifrujF}
+      'g': {write: 'G', R: sifrujG}
+      '$': {R: najdiKonec} 
+   
+    sifrujA:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '1', R: pokracujA}
+      
+    pokracujA:
+      ' ': {write: '1', L: pokracujSifru}
+      
+    sifrujB:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '2', L: pokracujSifru}
+    
+    sifrujC:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '3', R: pokracujC} 
+      
+    pokracujC:
+      ' ': {write: '3', L: pokracujSifru}
+      
+    sifrujD:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '4', L: pokracujSifru}
+      
+    sifrujE:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '5', R: pokracujE}
+    
+    pokracujE:
+      ' ': {write: '5', L: pokracujSifru}
+      
+    sifrujF:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '6', L: pokracujSifru}
+    
+    sifrujG:
+      'a': R
+      'b': R
+      'c': R
+      'd': R
+      'e': R
+      'f': R
+      'g': R
+      '$': R
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '7', R: pokracujG}
+    
+    pokracujG:
+      ' ': {write: '7', L: pokracujSifru}
+    
+    pokracujSifru:
+      'a': L
+      'b': L
+      'c': L
+      'd': L
+      'e': L
+      'f': L
+      'g': L
+      '$': L
+      '1': L
+      '2': L
+      '3': L
+      '4': L
+      '5': L
+      '6': L
+      '7': L
+      'A': {R: sifruj}
+      'B': {R: sifruj}
+      'C': {R: sifruj}
+      'D': {R: sifruj}
+      'E': {R: sifruj}
+      'F': {R: sifruj}
+      'G': {R: sifruj}
+    
+    najdiKonec:
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      ' ': {write: '$', L: najdiHestekZprava}
+    
+    najdiHestekZprava:
+      'A': L
+      'B': L
+      'C': L
+      'D': L
+      'E': L
+      'F': L
+      'G': L
+      '$': L
+      '1': L
+      '2': L
+      '3': L
+      '4': L
+      '5': L
+      '6': L
+      '7': L
+      '#': {R: zistiRozdiel}
+    
+    zistiRozdiel:
+      'A': {write: 'a', R: hladajCislo}
+      'B': {write: 'b', R: hladajCislo}
+      'C': {write: 'c', R: hladajCislo}
+      'D': {write: 'd', R: hladajCislo}
+      'E': {write: 'e', R: hladajCislo}
+      'F': {write: 'f', R: hladajCislo}
+      'G': {write: 'g', R: hladajCislo}
+      '$': {R: cekujRozdielZlava} 
+      #******
+    
+    hladajCislo:
+      'A': R
+      'B': R
+      'C': R
+      'D': R
+      'E': R
+      'F': R
+      'G': R
+      '$': R
+      '1': {write: 'q', L: pokracujVrozdieli}
+      '2': {write: 'w', L: pokracujVrozdieli}
+      '3': {write: 'p', L: pokracujVrozdieli}
+      '4': {write: 'r', L: pokracujVrozdieli}
+      '5': {write: 't', L: pokracujVrozdieli}
+      '6': {write: 'y', L: pokracujVrozdieli}
+      '7': {write: 'u', L: pokracujVrozdieli}
+      'q': R
+      'w': R
+      'p': R
+      'r': R
+      't': R
+      'y': R
+      'u': R
+      
+    pokracujVrozdieli:
+      'A': L
+      'B': L
+      'C': L
+      'D': L
+      'E': L
+      'F': L
+      'G': L
+      'a': {R: zistiRozdiel}
+      'b': {R: zistiRozdiel}
+      'c': {R: zistiRozdiel}
+      'd': {R: zistiRozdiel}
+      'e': {R: zistiRozdiel}
+      'f': {R: zistiRozdiel}
+      'g': {R: zistiRozdiel}
+      '$': L
+      'q': L
+      'w': L
+      'p': L
+      'r': L
+      't': L
+      'y': L
+      'u': L
+      
+    cekujRozdielZlava:
+      'q': R
+      'w': R
+      'p': R
+      'r': R
+      't': R
+      'y': R
+      'u': R
+      '$': {R: konec}
+      '1': {write: 'q', R: zapisRozdiel}
+      '2': {write: 'w', R: zapisRozdiel}
+      '3': {write: 'p', R: zapisRozdiel}
+      '4': {write: 'r', R: zapisRozdiel}
+      '5': {write: 't', R: zapisRozdiel}
+      '6': {write: 'y', R: zapisRozdiel}
+      '7': {write: 'u', R: zapisRozdiel}
+    
+    zapisRozdiel:
+      '1': R
+      '2': R
+      '3': R
+      '4': R
+      '5': R
+      '6': R
+      '7': R
+      '$': R
+      ' ': {write: '1', L: cekujRozdielZprava}
+    
+    cekujRozdielZprava:
+      '1': L
+      '$': L 
+      '2': L
+      '3': L
+      '4': L 
+      '5': L
+      '6': L
+      '7': L
+      'q': {R: zapisRozdiel2}
+      'w': {R: zapisRozdiel2}
+      'p': {R: zapisRozdiel2}
+      'r': {R: zapisRozdiel2}
+      't': {R: zapisRozdiel2}
+      'y': {R: zapisRozdiel2}
+      'u': {R: zapisRozdiel2}
+      
+    zapisRozdiel2:
+      '1': {write: 'q', R: zapisRozdiel}
+      '2': {write: 'w', R: zapisRozdiel}
+      '3': {write: 'p', R: zapisRozdiel}
+      '4': {write: 'r', R: zapisRozdiel}
+      '5': {write: 't', R: zapisRozdiel}
+      '6': {write: 'y', R: zapisRozdiel}
+      '7': {write: 'u', R: zapisRozdiel} 
+      '$': {L: resetPasky}
+    
+    resetPasky:
+      'q': {write: '1', L}
+      'w': {write: '2', L}
+      'p': {write: '3', L}
+      'r': {write: '4', L}
+      't': {write: '5', L}
+      'y': {write: '6', L}
+      'u': {write: '7', L}
+      '$': {R: konec}
+    
+    konec:
+positions:
+  start: {x: 44.01, y: 456.94}
+  zapisA: {x: 171.69, y: 480, fixed: false}
+  zapis1: {x: 288.11, y: 480, fixed: false}
+  zapis1b: {x: 143.11, y: 480, fixed: false}
+  zapisB: {x: 314.64, y: 480, fixed: false}
+  zapis2: {x: 450.43, y: 480, fixed: false}
+  zapisC: {x: 566.88, y: 480, fixed: false}
+  zapis3: {x: 400.6, y: 480, fixed: false}
+  zapis3b: {x: 235.54, y: 480, fixed: false}
+  zapisD: {x: 80.4, y: 480, fixed: false}
+  zapis4: {x: 20, y: 372.1, fixed: false}
+  zapisE: {x: 20, y: 242.31, fixed: false}
+  zapis5: {x: 20, y: 106.5, fixed: false}
+  zapis5b: {x: 86.4, y: 20, fixed: false}
+  zapisF: {x: 20, y: 155.83, fixed: false}
+  zapis6: {x: 20, y: 20, fixed: false}
+  zapisG: {x: 154.43, y: 20, fixed: false}
+  zapis7: {x: 293.39, y: 20, fixed: false}
+  zapis7b: {x: 422.7, y: 20, fixed: false}
+  najdiHestekZlava: {x: 494.23, y: 142.01, fixed: false}
+  sifruj: {x: 644.15, y: 148.73, fixed: false}
+  sifrujA: {x: 780, y: 194.72, fixed: false}
+  pokracujA: {x: 780, y: 324.3, fixed: false}
+  sifrujB: {x: 723.32, y: 273.89, fixed: false}
+  sifrujC: {x: 563.36, y: 20, fixed: false}
+  pokracujC: {x: 715.28, y: 20, fixed: false}
+  sifrujD: {x: 683.72, y: 20, fixed: false}
+  sifrujE: {x: 624.14, y: 20, fixed: false}
+  pokracujE: {x: 780, y: 20, fixed: false}
+  sifrujF: {x: 750.94, y: 20, fixed: false}
+  sifrujG: {x: 643.52, y: 300.87, fixed: false}
+  pokracujG: {x: 780, y: 287.24, fixed: false}
+  pokracujSifru: {x: 780, y: 145.39, fixed: false}
+  najdiKonec: {x: 511.7, y: 82.47, fixed: false}
+  najdiHestekZprava: {x: 518.28, y: 241.79, fixed: false}
+  zistiRozdiel: {x: 573.27, y: 383.36, fixed: false}
+  hladajCislo: {x: 642.56, y: 480, fixed: false}
+  pokracujVrozdieli: {x: 751.23, y: 480, fixed: false}
+  cekujRozdielZlava: {x: 411.8, y: 299.97, fixed: false}
+  zapisRozdiel: {x: 310.93, y: 163.24, fixed: false}
+  cekujRozdielZprava: {x: 237.81, y: 20, fixed: false}
+  zapisRozdiel2: {x: 165.74, y: 144.01, fixed: false}
+  resetPasky: {x: 104.46, y: 277.52, fixed: false}
+  konec: {x: 255.77, y: 297.33, fixed: false}
