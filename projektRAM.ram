@@ -1,7 +1,9 @@
 read 1 
 read 2
 read 3
-
+load 3
+jgtz cyklus
+halt
 cyklus:
 	write 1
 	load 1
